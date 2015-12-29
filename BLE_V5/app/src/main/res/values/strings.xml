@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Datenlogger</string>
+    <string name="labelTemperature">Temperatur:</string>
+    <string name="labelRPM">Drehzahl:</string>
+    <string name="labelPressure">Öldruck:</string>
+    <string name="labelScan">Suche nach verfügbaren Geräten:</string>
+    <string name="labelBtnStart">Starte Scan</string>
+    <string name="labelBtnStop">Stoppe Scan</string>
+    <string name="labelFoundDevices">Gefundene Geräte:</string>
+    <string name="itemSettings">Einstellungen</string>
+    <string name="notConnected">Nicht verbunden</string>
+    <string name="connected">Verbunden</string>
+    <string name="connecting">Verbindungsaufbau</string>
+    <string name="labelPlot">Zeitverläufe</string>
+    <string name="labelLegend">Legende</string>
+    <string name="labelAverageValue">Durchschnitt</string>
+    <string name="noValues">---</string>
+</resources>
