@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.Log;
 
 import com.vogella.ble_fragmentsV5.fragments.ConnectionFragmentClasses.Fragment_Connection;
-import com.vogella.ble_fragmentsV5.fragments.Fragment_GeneralDisplay;
+import com.vogella.ble_fragmentsV5.fragments.GeneralDisplayFragmentClasses.Fragment_GeneralDisplay;
 import com.vogella.ble_fragmentsV5.fragments.PlotFragmentClasses.Fragment_Plots;
 
 /**

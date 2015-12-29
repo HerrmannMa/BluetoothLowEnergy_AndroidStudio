@@ -1,4 +1,4 @@
-package com.vogella.ble_fragmentsV5.fragments;
+package com.vogella.ble_fragmentsV5.fragments.GeneralDisplayFragmentClasses;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -8,12 +8,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.vogella.ble_fragmentsV5.R;
 import com.vogella.ble_fragmentsV5.general.BroadcastFilters;
 import com.vogella.ble_fragmentsV5.general.SensorTag;
 import com.vogella.ble_fragmentsV5.services.BluetoothLeService;
+
+import org.achartengine.GraphicalView;
 
 import java.util.Locale;
 
@@ -27,6 +30,9 @@ public class Fragment_GeneralDisplay extends android.support.v4.app.Fragment {
     private TextView tvTemperature;
     private TextView tvPressure;
     private TextView tvRPM;
+    private LinearLayout chart;
+    private DialChart dial;
+    private GraphicalView view;
 
     //individual tag for fragment
     private static final String TAG = Fragment_GeneralDisplay.class.getSimpleName();
@@ -38,6 +44,14 @@ public class Fragment_GeneralDisplay extends android.support.v4.app.Fragment {
     private final double MAX_PRESSURE = 80;
     private final int MIN_RPM = 1000;
     private final int MAX_RPM = 10000;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState){
+        Log.d(TAG, "Entering: OnCreate");
+        super.onCreate(savedInstanceState);
+        dial = new DialChart();
+        Log.d(TAG, "Leaving: OnCreate");
+    }
 
     @Override
     public void onResume(){
@@ -61,6 +75,9 @@ public class Fragment_GeneralDisplay extends android.support.v4.app.Fragment {
         super.onActivityCreated(savedInstanceState);
         //Clear all view elements as onCreateView() was called before this method ==> All internal view references are initialized
         clearDisplay();
+        view = dial.getView(getContext());
+        chart.removeAllViews();
+        chart.addView(view);
         Log.d(TAG, "Leaving: onActivityCreated");
     }
 
@@ -72,6 +89,7 @@ public class Fragment_GeneralDisplay extends android.support.v4.app.Fragment {
         tvTemperature = (TextView)rootView.findViewById(R.id.valueTemperature);
         tvPressure = (TextView)rootView.findViewById(R.id.valuePressure);
         tvRPM = (TextView)rootView.findViewById(R.id.valueRPM);
+        chart = (LinearLayout)rootView.findViewById(R.id.rpmChart);
 
         Log.d(TAG, "Leaving: onCreateView");
         return rootView;
@@ -96,6 +114,8 @@ public class Fragment_GeneralDisplay extends android.support.v4.app.Fragment {
         tvTemperature.setTextColor(checkMinMax(temperature, Measurement.TEMPERATURE));
         //Only show two decimal places and user german separator (',')
         tvTemperature.setText(String.format(Locale.GERMAN, "%.2f", temperature));
+        dial.addNewSpeeds(temperature* 100);
+        view.repaint();
         Log.d(TAG, "Leaving: updateTemperature");
     }
 

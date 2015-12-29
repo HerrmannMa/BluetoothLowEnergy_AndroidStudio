@@ -4,60 +4,85 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="wrap_content"
+        android:baselineAligned="false">
 
-        <TextView
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/labelTemperature"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            android:id="@+id/labelTemperature" />
+            android:layout_weight="1"
+            android:layout_height="100dp">
 
-        <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/labelTemperature"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:id="@+id/labelTemperature" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/valueTemperature" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/valueTemperature" />
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:layout_height="100dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/labelPressure"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:id="@+id/labelPressure" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/valuePressure" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="match_parent">
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:text="@string/labelRPM"
-            android:textSize="25dp"
+            android:textSize="25sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
             android:textStyle="bold"
             android:id="@+id/labelRPM" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/valueRPM" />
-    </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_weight="8"
+            android:layout_height="0dp"
+            android:id="@+id/rpmChart"></LinearLayout>
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="100dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/labelPressure"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            android:id="@+id/labelPressure" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/valuePressure" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/valueRPM" />
+
+
     </LinearLayout>
 
 </LinearLayout>
